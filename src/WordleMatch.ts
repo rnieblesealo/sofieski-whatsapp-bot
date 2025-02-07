@@ -11,6 +11,8 @@ export function ProcessString(
 }
 
 export interface WordleInfo {
+	id?: number;
+	date?: string;
 	wordle_number: number;
 	tries: number;
 	grid: string;
@@ -41,10 +43,19 @@ export default function WordleMatch(body: string): Promise<WordleInfo> {
 			void prefix;
 			void wordleLiteral;
 
+			const date = new Date();
+
+			// rm emojis from grid to avoid potential encoding issues
+			const demojiedGrid = grid
+				.replace(/🟩/g, "g")
+				.replace(/🟨/g, "y")
+				.replace(/⬜/g, "w");
+
 			const info: WordleInfo = {
+				date: date.toISOString().slice(0, 13), // grab only "YYYY-MM-DDTHH"
 				wordle_number: Number.parseInt(number.replace(/,/g, "")), // need to manually remove commas before parsing int
 				tries: Number.parseInt(tries),
-				grid: grid,
+				grid: demojiedGrid,
 			};
 
 			resolve(info);

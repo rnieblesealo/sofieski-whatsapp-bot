@@ -36,27 +36,27 @@ const testOutputs: WordleInfo[] = [
 	{
 		wordle_number: 1328,
 		tries: 2,
-		grid: "🟩🟨🟨⬜⬜🟩🟩🟩🟩🟩",
+		grid: "gyywwggggg",
 	},
 	{
 		wordle_number: 12000,
 		tries: 0,
-		grid: "🟩🟨🟨⬜⬜🟩🟩🟩🟩🟩",
+		grid: "gyywwggggg",
 	},
 	{
 		wordle_number: 1000,
 		tries: 1,
-		grid: "🟩🟩🟩🟩🟩",
+		grid: "ggggg",
 	},
 	{
 		wordle_number: 1200,
 		tries: 2,
-		grid: "⬜⬜",
+		grid: "ww",
 	},
 	{
 		wordle_number: 1328,
 		tries: 3,
-		grid: "🟩🟩🟩🟩🟩",
+		grid: "ggggg",
 	},
 ];
 
@@ -67,7 +67,7 @@ describe("WordleMatch function", () => {
 			return WordleMatch(testInputs[i])
 				.then((result) => {
 					console.log("Obtained:", result);
-					expect(result).toEqual(testOutputs[i]);
+					expect(result).toMatchObject(testOutputs[i]);
 				})
 				.catch((error) => {
 					throw new Error(
