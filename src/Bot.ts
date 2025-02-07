@@ -22,10 +22,14 @@ client.on("message_create", async (message) => {
 	if (contactName === targetContactName) {
 		WordleMatch(message.body)
 			.then((result) => {
+				console.log("Successfully matched Wordle info from body: ", result);
 				Insert(result);
 			})
-			.catch((error) => {
-				console.log("Failed to match Wordle info, will not upload: ", error);
+			.catch((failedInput) => {
+				console.log(
+					"Failed to match Wordle info, will not upload. Match candidate: ",
+					failedInput,
+				);
 			});
 	}
 });

@@ -20,6 +20,8 @@ export default async function Insert(info: WordleInfo): Promise<void> {
 		.from("wordle_values") // Select store table
 		.insert(info); // Insert row into table;
 
+	void data;
+
 	/* The resulting table entry would look like this
 	 * [  id   | date  | wordle_number | tries | grid  ]
 	 */
@@ -27,6 +29,6 @@ export default async function Insert(info: WordleInfo): Promise<void> {
 	if (error) {
 		console.error(`Error inserting row: ${error.message}`);
 	} else {
-		console.log(`Inserted successfully! Data: ${data}`);
+		console.log("Inserted to DB successfully!");
 	}
 }

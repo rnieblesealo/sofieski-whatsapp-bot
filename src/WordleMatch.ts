@@ -23,7 +23,7 @@ export default function WordleMatch(body: string): Promise<WordleInfo> {
 		// remove tabs and newlines
 		const pBody = ProcessString(body, ["\t", "\n"]);
 
-		console.log("Cleaned body: ", pBody);
+		console.log("Cleaned body: ", pBody, "; trying to match Wordle info...");
 
 		// is wordle pattern in body?
 		const wordleBodyPattern =
@@ -36,16 +36,11 @@ export default function WordleMatch(body: string): Promise<WordleInfo> {
 				return ProcessString(item);
 			});
 
-			console.log("Matched wordle info: ", formalSplit);
-			// Example: ["", "Wordle", "1,328", "2", "🟩🟨🟨⬜⬜🟩🟩🟩🟩🟩"]
-
 			const [prefix, wordleLiteral, number, tries, grid] = formalSplit;
 
 			// use junk values so typescript doesnt complain
 			void prefix;
 			void wordleLiteral;
-
-			const date = new Date();
 
 			// rm emojis from grid to avoid potential encoding issues
 			const demojiedGrid = grid
@@ -54,7 +49,7 @@ export default function WordleMatch(body: string): Promise<WordleInfo> {
 				.replace(/⬜/g, "w");
 
 			const info: WordleInfo = {
-				date: date.toISOString().slice(0, 13), // grab only "YYYY-MM-DDTHH"
+				date: new Date().toISOString().slice(0, 13), // grab only "YYYY-MM-DDTHH"
 				wordle_number: Number.parseInt(number.replace(/,/g, "")), // need to manually remove commas before parsing int
 				tries: Number.parseInt(tries),
 				grid: demojiedGrid,
