@@ -21,3 +21,6 @@ Thumbs.db  # Windows
 .idea/
 *.sublime-workspace
 *.sublime-project
+
+#WARN: wweb cache
+.wwebjs_cache
