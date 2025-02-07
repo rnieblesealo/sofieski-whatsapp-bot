@@ -26,7 +26,9 @@ export default function WordleMatch(body: string): Promise<WordleInfo> {
 		console.log("Cleaned body: ", pBody);
 
 		// is wordle pattern in body?
-		const wordleBodyPattern = /[\s\S]+?(Wordle)\ +(\d+,\d+)\ +(\d+)\/6*/gm;
+		const wordleBodyPattern =
+			/(Wordle)\ +(\d+,\d+)\ +(\d+)\/6([^\s]+(?:\s+[^\s]+)*)/gm;
+
 		if (wordleBodyPattern.test(pBody)) {
 			// split wordle info, cleaning split tokens of whitespace
 			const split = pBody.split(wordleBodyPattern);

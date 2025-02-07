@@ -2,6 +2,9 @@
 import WordleMatch from "../src/WordleMatch";
 import { WordleInfo } from "../src/WordleMatch";
 
+// WARN: these testcases are broken because of whitespace
+// whatsapp scraping is working perfectly tho
+// why the fuck are these test cases broken if the format matches?
 const testInputs = [
 	`
     Wordle 1,328 2/6
