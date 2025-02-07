@@ -23,4 +23,4 @@ Thumbs.db  # Windows
 *.sublime-project
 
 #WARN: wweb cache
-.wwebjs_cache
+.wwebjs_cache/
