@@ -2,13 +2,11 @@ import { Client } from "whatsapp-web.js";
 import * as qrcode from "qrcode-terminal";
 import WordleMatch from "./WordleMatch";
 import Insert from "./SupabaseHandler";
-import { updateBotStatus } from "./SupabaseHandler";
 
 const client = new Client({});
 
 client.once("ready", () => {
 	console.log("Client ready");
-	updateBotStatus(true); // tell supabase bot is online
 });
 
 // make login qr
