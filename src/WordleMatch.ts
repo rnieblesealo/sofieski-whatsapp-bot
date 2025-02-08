@@ -49,7 +49,7 @@ export default function WordleMatch(body: string): Promise<WordleInfo> {
 				.replace(/⬜/g, "w");
 
 			const info: WordleInfo = {
-				date: new Date().toISOString().slice(0, 13), // grab only "YYYY-MM-DDTHH"
+				date: new Date().toISOString(),
 				wordle_number: Number.parseInt(number.replace(/,/g, "")), // need to manually remove commas before parsing int
 				tries: Number.parseInt(tries),
 				grid: demojiedGrid,
