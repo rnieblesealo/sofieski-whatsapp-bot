@@ -19,7 +19,7 @@ client.on("message_create", async (message) => {
 	const contactName = contact.name ?? "NONE";
 	const targetContactName = "sofieski";
 
-	if (contactName === targetContactName) {
+	if (contactName === targetContactName || contactName === "Rafael Niebles") {
 		WordleMatch(message.body)
 			.then((result) => {
 				console.log("Successfully matched Wordle info from body: ", result);
