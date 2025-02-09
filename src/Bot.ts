@@ -17,7 +17,7 @@ client.on("qr", (qr) => {
 client.on("message_create", async (message) => {
 	const contact = await message.getContact();
 	const contactName = contact.name ?? "NONE";
-	const targetContactName = "Rafael Niebles";
+	const targetContactName = "sofieski";
 
 	if (contactName === targetContactName) {
 		WordleMatch(message.body)
